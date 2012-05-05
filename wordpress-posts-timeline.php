@@ -1,7 +1,7 @@
 <?php
 /*
 	Plugin Name: WordPress Posts Timeline
-	Plugin URI: http://wordpress.org/extend/plugins/
+	Plugin URI: http://hackbits.com/plugins/wp-posts-timeline
 	Description: Outputs WordPress posts in a vertical timeline
 	Author: Wylie Hobbs
 	Version: 0.2
@@ -10,26 +10,33 @@
 	Domain Path: /lang
  */
  
- 
-function display_timeline($atts, $content = null){
-	extract( shortcode_atts( array(
+//example usage: [wp-timeline cat="5" date='F j, Y' show="15"] - show 15 posts in category-ID 5 with date format May 1, 2012
+function timeline_shortcode($atts){
+	$args = shortcode_atts( array(
       'cat' => '0',
       'type' => 'post',
       'show' => 5,
       'date' => 'Y'
-     ), $atts ) );
+     ), $atts );
+     
+     return display_timeline($args);
+ }
+ 
+add_shortcode('wp-timeline', 'timeline_shortcode');
 
-	$args = array(
-			'post_type' => $type,
-			'numberposts' => $show,
-			'category' => $cat,
+function display_timeline($args){
+
+	$post_args = array(
+			'post_type' => $args['type'],
+			'numberposts' => $args['show'],
+			'category' => $args['cat'],
 			'orderby' => 'post_date',
 			'order' => 'ASC',
 			'post_status' => 'publish'
 		);
 
 	
-		$posts = get_posts( $args );
+		$posts = get_posts( $post_args );
 		echo '<div id="timeline">';
 		echo '<ul>';	
 		foreach ( $posts as $post ) : setup_postdata($post);
@@ -37,7 +44,7 @@ function display_timeline($atts, $content = null){
 	        echo '<li><div>';
 	        
 	                echo '<h3>';
-	                the_time($date);
+	                the_time($args['date']);
 	                echo'</h3>';
 	                echo '<p>'.$post->post_content.'</p>';
 	        
@@ -49,8 +56,6 @@ function display_timeline($atts, $content = null){
 		echo '</div> <!-- #timeline -->';
 		wp_reset_postdata();
 }
-
-add_shortcode('wp-timeline', 'display_timeline');
 
 function timeline_scripts() 
 {
