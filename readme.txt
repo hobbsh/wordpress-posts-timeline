@@ -1,8 +1,10 @@
-=== Plugin Name ===
+=== WordPress Posts Timeline ===
 Contributors: hobbsh
+Donate Link: http://www.hackbits.com/plugins/donate/
 Tags: posts timeline, css timeline
 Requires at least: 3.1
 Tested up to: 3.3.2
+Stable tag: trunk
 License: GPLv2
 
 Output your WordPress posts or custom post types as a timeline with a few options.
@@ -36,13 +38,12 @@ To change the date format (maybe to use a MM DD, YYYY format), pass the appropri
 = 0.2 =
 Initial Release
 
+== Upgrade Notice ==
+
 
 == A brief Markdown Example ==
 
-
-=Usage=
-
-**Default**
+**Default Usage**
 
 *[wp-timeline cat="5"]*
 Display posts in post category "5" (category ID). Use *cat-name* to use a category name. If no category is specified, it will pull uncategorized posts.
@@ -59,4 +60,4 @@ Timeline dates will show up like "April 20, 2012"
 **Show more posts**
 
 *[wp-timeline cat="5" date='F j, Y' show="15"]*
-Show 15 posts in category 5. Use "-1" to show all. 
+Show 15 posts in category 5. Use "-1" to show all.
