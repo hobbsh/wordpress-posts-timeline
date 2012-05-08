@@ -16,7 +16,8 @@ function timeline_shortcode($atts){
       'cat' => '0',
       'type' => 'post',
       'show' => 5,
-      'date' => 'Y'
+      'date' => 'Y',
+      'length' => 100
      ), $atts );
      
      return display_timeline($args);
@@ -38,17 +39,15 @@ function display_timeline($args){
 	
 		$posts = get_posts( $post_args );
 		echo '<div id="timeline">';
-		echo '<ul>';	
+		echo '<ul>';
 		foreach ( $posts as $post ) : setup_postdata($post);
 
 	        echo '<li><div>';
-	        
-	                echo '<h3>';
-	                the_time($args['date']);
-	                echo'</h3>';
-	                echo '<p>'.$post->post_content.'</p>';
-	        
-	        echo '</div></li>';
+	            echo '<h3 class="timeline-date">';
+				echo get_the_time($args['date'], $post->ID);
+				echo '</h3>';
+				echo timeline_text($args['length']);
+				echo '</div></li>';
 
     	endforeach;
 
@@ -56,6 +55,20 @@ function display_timeline($args){
 		echo '</div> <!-- #timeline -->';
 		wp_reset_postdata();
 }
+
+function timeline_text($charlength){
+	
+	$raw_text = get_the_content('', true, '');
+
+	if ( mb_strlen( $raw_text ) > $charlength ) {
+		$subex = strip_tags(mb_substr( $raw_text, 0, $charlength - 5 ));
+		return '<p>'.$subex.'</p>';
+	}
+	else{
+		return '<p>'.$raw_text.'</p>';
+	}
+}
+
 
 function timeline_scripts() 
 {
@@ -65,5 +78,7 @@ function timeline_scripts()
 }
 
 add_action ('wp_enqueue_scripts', 'timeline_scripts');
-
+add_theme_support('post-thumbnails');
+add_filter('get_the_content', 'do_shortcode');
+add_filter('get_the_excerpt', 'do_shortcode');
 ?>
