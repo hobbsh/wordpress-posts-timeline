@@ -39,10 +39,11 @@ CSS version 1.0
         margin-left:-10px;
         padding-left:30px;
     }
-    #timeline .date{
+    #timeline .timeline-date{
         text-align: right;
+        margin-bottom: 1%;
     }
-    #timeline ul li:nth-child(even) > div .date{
+    #timeline ul li:nth-child(even) > div .timeline-date{
         text-align: left;
     }
 
@@ -62,3 +63,20 @@ CSS version 1.0
         float:right;
         text-align: right;
     }
+    
+#timeline ul .timeline-image{
+	width: 17%;
+	height: auto;
+	overflow-x: hidden;
+}
+	#timeline ul li:nth-child(odd) > div .timeline-image {
+		float:right;
+		margin-right:1%;
+	}
+	#timeline ul li:nth-child(even) > div .timeline-image {
+		float:left;
+		margin-left: 1%;
+	}
+
+	
+	
