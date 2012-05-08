@@ -1,7 +1,7 @@
 === WordPress Posts Timeline ===
 Contributors: hobbsh
-Donate Link: http://www.hackbits.com/plugins/donate/
-Tags: posts timeline, css timeline
+Donate Link: http://www.hackbits.com/
+Tags: posts timeline, css timeline, vertical timeline, timeline
 Requires at least: 3.1
 Tested up to: 3.3.2
 Stable tag: trunk
