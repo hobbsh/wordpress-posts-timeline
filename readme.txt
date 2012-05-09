@@ -3,7 +3,7 @@ Contributors: hobbsh
 Donate Link: http://www.hackbits.com/
 Tags: posts timeline, css timeline, vertical timeline, timeline
 Requires at least: 3.1
-Tested up to: 3.3.2
+Tested up to: 3.4.3 beta
 Stable tag: trunk
 License: GPLv2
 
@@ -20,7 +20,7 @@ It will pull uncategorized posts by default.
 1. Unzip `wordpress-posts-timeline.zip` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Use shortcode [wp-timeline] in page or template to display timeline.
-4. See usage page for more options
+4. See 'other notes' for syntax options
 
 == Frequently Asked Questions ==
 
@@ -35,7 +35,8 @@ To change the date format (maybe to use a MM DD, YYYY format), pass the appropri
 == Changelog ==
 
 
-= 0.2 =
+
+= 1.0 =
 Initial Release
 
 == Upgrade Notice ==
@@ -46,11 +47,17 @@ Initial Release
 **Default Usage**
 
 *[wp-timeline cat="5"]*
-Display posts in post category "5" (category ID). Use *cat-name* to use a category name. If no category is specified, it will pull uncategorized posts.
+Display posts in post category "5" (category ID). If no category is specified, it will pull uncategorized posts.
 
 
-=Shortcode Options=
+**Other Options**
 
+*cat* – specify a category ID, default is 0
+*show* – show a certain number of posts, default is 10
+*date* – specify a date format (see http://php.net > the_time()), default is year only
+*type* – specify a custom post type, default is post
+*length* – specify text length, default is 100 words
+*images* – output post’s featured image (yes or no), default is no
 
 **Change date format** - 
 

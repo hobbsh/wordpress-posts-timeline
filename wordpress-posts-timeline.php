@@ -4,7 +4,7 @@
 	Plugin URI: http://wordpress.org/extend/plugins/wordpress-posts-timeline
 	Description: Outputs WordPress posts in a vertical timeline
 	Author: Wylie Hobbs
-	Version: 0.2
+	Version: 1.0
 	Author URI: http:/hackbits.com/demos/wordpress-posts-timeline
 	Text Domain: wordpress-posts-timeline
 	Domain Path: /lang
