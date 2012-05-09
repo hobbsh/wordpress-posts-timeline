@@ -1,0 +1,82 @@
+/*
+
+Structural CSS for the Timeline
+Modify at your own risk!
+
+by Wylie Hobbs
+CSS version 1.0
+
+ */
+#timeline ul{
+    width:100%;
+    margin:0 auto;
+    position:relative;
+    display:inline-block;
+    list-style: none;
+    background:url('../img/ul-bg.png') center top repeat-y;
+    padding: 0;
+}
+#timeline ul li{
+    display: block;
+    position: relative;
+    width: 50%;
+    clear:both;
+}
+#timeline ul li p{
+        width:70%;
+    }
+    #timeline ul li div{
+        //you can add a background color if you want
+    }
+
+#timeline ul li:nth-child(even){
+    float: right;
+}
+    #timeline ul li:nth-child(even) > div{
+        display: block;
+        float:left;
+        background:url('../img/li-bg.png') left center no-repeat;
+        margin-left:-10px;
+        padding-left:30px;
+    }
+    #timeline .timeline-date{
+        text-align: right;
+        margin-bottom: 1%;
+    }
+    #timeline ul li:nth-child(even) > div .timeline-date{
+        text-align: left;
+    }
+
+#timeline ul li:nth-child(odd){
+    float: left;
+    text-align: right;
+}
+    #timeline ul li:nth-child(odd) > div{
+        display:block;
+        float:right;
+        background:url('../img/li-bg.png') right center no-repeat;
+        margin-right:-10px;
+        padding-right:30px;
+    }
+
+    #timeline ul li:nth-child(odd) > div p{
+        float:right;
+        text-align: right;
+    }
+    
+#timeline ul .timeline-image{
+	width: 17%;
+	height: auto;
+	overflow-x: hidden;
+}
+	#timeline ul li:nth-child(odd) > div .timeline-image {
+		float:right;
+		margin-right:1%;
+	}
+	#timeline ul li:nth-child(even) > div .timeline-image {
+		float:left;
+		margin-left: 1%;
+	}
+
+	
+	
