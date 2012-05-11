@@ -1,45 +1,16 @@
 <?php
 /*
 	Plugin Name: WordPress Posts Timeline
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 	Plugin URI: http://wordpress.org/extend/plugins/wordpress-posts-timeline
 	Description: Outputs WordPress posts in a vertical timeline
 	Author: Wylie Hobbs
 	Version: 1.0
 	Author URI: http:/hackbits.com/demos/wordpress-posts-timeline
-=======
-	Plugin URI: http://wordpress.org/extend/plugins/
-=======
-	Plugin URI: http://hackbits.com/plugins/wp-posts-timeline
->>>>>>> added short code function
-	Description: Outputs WordPress posts in a vertical timeline
-	Author: Wylie Hobbs
-	Version: 0.2
-	Author URI: http:/hackbits.com
->>>>>>> Initial Commit
-=======
-	Plugin URI: http://wordpress.org/extend/plugins/wordpress-posts-timeline
-	Description: Outputs WordPress posts in a vertical timeline
-	Author: Wylie Hobbs
-	Version: 0.2
-	Author URI: http:/hackbits.com/demos/wordpress-posts-timeline
->>>>>>> multiple changes
 	Text Domain: wordpress-posts-timeline
 	Domain Path: /lang
  */
  
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> multiple changes
-/*  Copyright YEAR  PLUGIN_AUTHOR_NAME  (email : wylie@hackbits.com)
-=======
 /*  Copyright 2012  Wylie Hobbs  (email : wylie@hackbits.com)
->>>>>>> minor changes
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -58,16 +29,6 @@
 //example usage: [wp-timeline cat="5" date='F j, Y' show="15"] - show 15 posts in category-ID 5 with date format May 1, 2012
 function timeline_shortcode($atts){
 	$args = shortcode_atts( array(
-<<<<<<< HEAD
-      'cat' => '0',
-      'type' => 'post',
-      'show' => 5,
-      'date' => 'Y',
-      'length' => 100,
-      'images' => 'no'
-<<<<<<< HEAD
-     ), $atts );
-=======
 		      'cat' => '0',
 		      'type' => 'post',
 		      'show' => 5,
@@ -75,7 +36,6 @@ function timeline_shortcode($atts){
 		      'length' => 100,
 		      'images' => 'no'
      		), $atts );
->>>>>>> minor changes
      
      return display_timeline($args);
  }
@@ -89,59 +49,15 @@ function display_timeline($args){
 			'post_type' => $args['type'],
 			'numberposts' => $args['show'],
 			'category' => $args['cat'],
-=======
- 
-function display_timeline($atts, $content = null){
-	extract( shortcode_atts( array(
-=======
-//example usage: [wp-timeline cat="5" date='F j, Y' show="15"] - show 15 posts in category-ID 5 with date format May 1, 2012
-function timeline_shortcode($atts){
-	$args = shortcode_atts( array(
->>>>>>> added short code function
-      'cat' => '0',
-      'type' => 'post',
-      'show' => 5,
-      'date' => 'Y',
-      'length' => 100
-=======
->>>>>>> multiple changes
-     ), $atts );
-     
-     return display_timeline($args);
- }
- 
-add_shortcode('wp-timeline', 'timeline_shortcode');
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-	$args = array(
-			'post_type' => $type,
-			'numberposts' => $show,
-			'category' => $cat,
->>>>>>> Initial Commit
-=======
-=======
-//display the timeline
->>>>>>> multiple changes
-function display_timeline($args){
-
-	$post_args = array(
-			'post_type' => $args['type'],
-			'numberposts' => $args['show'],
-			'category' => $args['cat'],
->>>>>>> added short code function
 			'orderby' => 'post_date',
 			'order' => 'ASC',
 			'post_status' => 'publish'
 		);
 
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
 		$posts = get_posts( $post_args );
 		echo '<div id="timeline">';
 		echo '<ul>';
-<<<<<<< HEAD
 		foreach ( $posts as $post ) : setup_postdata($post);
 
 	        echo '<li><div>';
@@ -155,34 +71,6 @@ function display_timeline($args){
 				}
 				echo timeline_text($args['length']);
 				echo '</div></li>';
-=======
-		$posts = get_posts( $args );
-=======
-		$posts = get_posts( $post_args );
->>>>>>> added short code function
-		echo '<div id="timeline">';
-		echo '<ul>';	
-		foreach ( $posts as $post ) : setup_postdata($post);
-
-	        echo '<li><div>';
-	        
-	                echo '<h3>';
-	                the_time($args['date']);
-	                echo'</h3>';
-	                echo '<p>'.$post->post_content.'</p>';
-	        
-	        echo '</div></li>';
->>>>>>> Initial Commit
-=======
-		foreach ( $posts as $post ) : setup_postdata($post);
-
-	        echo '<li><div>';
-	            echo '<h3 class="timeline-date">';
-				echo get_the_time($args['date'], $post->ID);
-				echo '</h3>';
-				echo timeline_text($args['length']);
-				echo '</div></li>';
->>>>>>> Display function update
 
     	endforeach;
 
@@ -191,16 +79,7 @@ function display_timeline($args){
 		wp_reset_postdata();
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 //trim text function
-=======
->>>>>>> Display function update
-=======
-//trim text function
->>>>>>> multiple changes
 function timeline_text($charlength){
 	
 	$raw_text = get_the_content('', true, '');
@@ -214,10 +93,6 @@ function timeline_text($charlength){
 	}
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> multiple changes
 //is shortcode active on page? if so, add styles to header
 function has_timeline_shortcode( $posts ) {
 
@@ -239,7 +114,6 @@ function has_timeline_shortcode( $posts ) {
         }
         return $posts;
     }
-<<<<<<< HEAD
 
 add_action('the_posts', 'has_timeline_shortcode');
 
@@ -273,59 +147,4 @@ function featured_image(){
 }
 add_filter('get_the_content', 'do_shortcode');
 add_filter('get_the_excerpt', 'do_shortcode');
-=======
-add_shortcode('wp-timeline', 'display_timeline');
-
-=======
->>>>>>> added short code function
-=======
-
->>>>>>> Display function update
-function timeline_scripts() 
-{
-=======
-
-add_action('the_posts', 'has_timeline_shortcode');
->>>>>>> multiple changes
-
-//add styles to header
-function add_timeline_styles(){
-	add_action('wp_print_styles', 'timeline_styles');
-}
-function timeline_styles(){
-
-<<<<<<< HEAD
-add_action ('wp_enqueue_scripts', 'timeline_scripts');
-<<<<<<< HEAD
-
->>>>>>> Initial Commit
-=======
-add_theme_support('post-thumbnails');
-=======
-		wp_register_style($handle = 'timeline', $src = plugins_url('css/timeline.css', __FILE__), $deps = array(), $ver = '1.0.0', $media = 'all');
-		wp_enqueue_style('timeline');
-}
-
-
-//check featured image theme support, add
-function featured_image(){
-	if ( !current_theme_supports( 'post_thumbnails' ) ) {
-		if ( function_exists( 'add_theme_support' ) ) { 
-			
-			add_theme_support( 'post-thumbnails' );
-			add_image_size( 'timeline-thumb', 80, auto ); //300 pixels wide (and unlimited height)
-			return true;
-		}
-	}
-	else{
-		
-		add_image_size( 'timeline-thumb', 80, auto ); //300 pixels wide (and unlimited height)
-		return true;
-	}
-
-}
->>>>>>> multiple changes
-add_filter('get_the_content', 'do_shortcode');
-add_filter('get_the_excerpt', 'do_shortcode');
->>>>>>> Display function update
 ?>
