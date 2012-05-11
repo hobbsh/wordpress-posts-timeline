@@ -23,7 +23,8 @@ CSS version 1.0
     clear:both;
 }
 #timeline ul li p{
-        width:70%;
+        width:68%;
+        float:left;
     }
     #timeline ul li div{
         //you can add a background color if you want
@@ -85,17 +86,18 @@ CSS version 1.0
     }
     
 #timeline ul .timeline-image{
-	width: 17%;
+	width: 22%;
 	height: auto;
 	overflow-x: hidden;
+	min-height: 100px;
 }
 	#timeline ul li:nth-child(odd) > div .timeline-image {
 		float:right;
-		margin-right:1%;
+		margin:0 0 0 1%;
 	}
 	#timeline ul li:nth-child(even) > div .timeline-image {
 		float:left;
-		margin-left: 1%;
+		margin: 0 1% 0 0;
 	}
 
 	
