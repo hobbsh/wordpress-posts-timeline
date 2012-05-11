@@ -134,13 +134,13 @@ function featured_image(){
 		if ( function_exists( 'add_theme_support' ) ) { 
 			
 			add_theme_support( 'post-thumbnails' );
-			add_image_size( 'timeline-thumb', 80, auto ); //300 pixels wide (and unlimited height)
+			add_image_size( 'timeline-thumb', 80, 9999 ); //80 pixels wide (and unlimited height)
 			return true;
 		}
 	}
 	else{
 		
-		add_image_size( 'timeline-thumb', 80, auto ); //300 pixels wide (and unlimited height)
+		add_image_size( 'timeline-thumb', 80, 9999 ); //80 pixels wide (and unlimited height)
 		return true;
 	}
 
