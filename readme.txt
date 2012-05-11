@@ -31,6 +31,7 @@ To change the date format (maybe to use a MM DD, YYYY format), pass the appropri
 
 
 == Screenshots ==
+`/trunk/screenshot-1.png`
 
 
 == Changelog ==
