@@ -33,9 +33,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> multiple changes
 /*  Copyright YEAR  PLUGIN_AUTHOR_NAME  (email : wylie@hackbits.com)
+=======
+/*  Copyright 2012  Wylie Hobbs  (email : wylie@hackbits.com)
+>>>>>>> minor changes
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 
@@ -54,6 +58,7 @@
 //example usage: [wp-timeline cat="5" date='F j, Y' show="15"] - show 15 posts in category-ID 5 with date format May 1, 2012
 function timeline_shortcode($atts){
 	$args = shortcode_atts( array(
+<<<<<<< HEAD
       'cat' => '0',
       'type' => 'post',
       'show' => 5,
@@ -62,6 +67,15 @@ function timeline_shortcode($atts){
       'images' => 'no'
 <<<<<<< HEAD
      ), $atts );
+=======
+		      'cat' => '0',
+		      'type' => 'post',
+		      'show' => 5,
+		      'date' => 'Y',
+		      'length' => 100,
+		      'images' => 'no'
+     		), $atts );
+>>>>>>> minor changes
      
      return display_timeline($args);
  }
