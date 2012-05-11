@@ -4,9 +4,8 @@ Donate Link: http://www.hackbits.com/
 Tags: posts timeline, css timeline, vertical timeline, timeline
 Requires at least: 3.1
 Tested up to: 3.4.3 beta
-Stable tag: trunk
+Stable tag: `trunk`
 License: GPLv2
-
 
 Output your WordPress posts or custom post types as a timeline with a few options.
 
@@ -39,7 +38,7 @@ To change the date format (maybe to use a MM DD, YYYY format), pass the appropri
 
 
 = 1.0 =
-Initial Release
+* Initial Release
 
 == Upgrade Notice ==
 
@@ -54,12 +53,12 @@ Display posts in post category "5" (category ID). If no category is specified, i
 
 **Other Options**
 
-*cat* – specify a category ID, default is 0
-*show* – show a certain number of posts, default is 10
-*date* – specify a date format (see http://php.net > the_time()), default is year only
-*type* – specify a custom post type, default is post
-*length* – specify text length, default is 100 words
-*images* – output post’s featured image (yes or no), default is no
+* *cat* – specify a category ID, default is 0
+* *show* – show a certain number of posts, default is 10
+* *date* – specify a date format (see http://php.net > the_time()), default is year only
+* *type* – specify a custom post type, default is post
+* *length* – specify text length, default is 100 words
+* *images* – output post’s featured image (yes or no), default is no
 
 **Change date format** - 
 
