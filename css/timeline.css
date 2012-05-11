@@ -40,6 +40,7 @@ CSS version 1.0
         padding-left:30px;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     #timeline .timeline-date{
         text-align: right;
         margin-bottom: 1%;
@@ -47,10 +48,18 @@ CSS version 1.0
     #timeline ul li:nth-child(even) > div .timeline-date{
 =======
     #timeline .date{
+=======
+    #timeline .timeline-date{
+>>>>>>> add featured image styles
         text-align: right;
+        margin-bottom: 1%;
     }
+<<<<<<< HEAD
     #timeline ul li:nth-child(even) > div .date{
 >>>>>>> Initial Commit
+=======
+    #timeline ul li:nth-child(even) > div .timeline-date{
+>>>>>>> add featured image styles
         text-align: left;
     }
 
@@ -70,6 +79,9 @@ CSS version 1.0
         float:right;
         text-align: right;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> add featured image styles
     }
     
 #timeline ul .timeline-image{
@@ -87,7 +99,11 @@ CSS version 1.0
 	}
 
 	
+<<<<<<< HEAD
 	
 =======
     }
 >>>>>>> Initial Commit
+=======
+	
+>>>>>>> add featured image styles
