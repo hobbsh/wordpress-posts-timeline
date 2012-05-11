@@ -4,6 +4,7 @@
 Contributors: hobbsh
 Donate Link: http://www.hackbits.com/
 Tags: posts timeline, css timeline, vertical timeline, timeline
+<<<<<<< HEAD
 Requires at least: 3.1
 Tested up to: 3.4.3 beta
 Stable tag: trunk
@@ -21,6 +22,8 @@ Tested up to: 2.1
 Stable tag: 4.3
 >>>>>>> Initial Commit
 =======
+=======
+>>>>>>> update read me info
 Requires at least: 3.1
 Tested up to: 3.3.2
 <<<<<<< HEAD
