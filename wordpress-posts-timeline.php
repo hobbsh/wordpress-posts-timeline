@@ -75,7 +75,8 @@ function timeline_shortcode($atts){
       'cat' => '0',
       'type' => 'post',
       'show' => 5,
-      'date' => 'Y'
+      'date' => 'Y',
+      'length' => 100
      ), $atts );
      
      return display_timeline($args);
@@ -108,6 +109,7 @@ function display_timeline($args){
 		$posts = get_posts( $post_args );
 		echo '<div id="timeline">';
 		echo '<ul>';
+<<<<<<< HEAD
 		foreach ( $posts as $post ) : setup_postdata($post);
 
 	        echo '<li><div>';
@@ -139,6 +141,16 @@ function display_timeline($args){
 	        
 	        echo '</div></li>';
 >>>>>>> Initial Commit
+=======
+		foreach ( $posts as $post ) : setup_postdata($post);
+
+	        echo '<li><div>';
+	            echo '<h3 class="timeline-date">';
+				echo get_the_time($args['date'], $post->ID);
+				echo '</h3>';
+				echo timeline_text($args['length']);
+				echo '</div></li>';
+>>>>>>> Display function update
 
     	endforeach;
 
@@ -149,7 +161,10 @@ function display_timeline($args){
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 //trim text function
+=======
+>>>>>>> Display function update
 function timeline_text($charlength){
 	
 	$raw_text = get_the_content('', true, '');
@@ -163,6 +178,7 @@ function timeline_text($charlength){
 	}
 }
 
+<<<<<<< HEAD
 //is shortcode active on page? if so, add styles to header
 function has_timeline_shortcode( $posts ) {
 
@@ -222,6 +238,9 @@ add_shortcode('wp-timeline', 'display_timeline');
 
 =======
 >>>>>>> added short code function
+=======
+
+>>>>>>> Display function update
 function timeline_scripts() 
 {
 
@@ -230,6 +249,12 @@ function timeline_scripts()
 }
 
 add_action ('wp_enqueue_scripts', 'timeline_scripts');
+<<<<<<< HEAD
 
 >>>>>>> Initial Commit
+=======
+add_theme_support('post-thumbnails');
+add_filter('get_the_content', 'do_shortcode');
+add_filter('get_the_excerpt', 'do_shortcode');
+>>>>>>> Display function update
 ?>
