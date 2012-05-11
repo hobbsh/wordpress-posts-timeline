@@ -9,12 +9,16 @@ Stable tag: trunk
 =======
 === Plugin Name ===
 Contributors: hobbsh
-Donate link: http://example.com/
 Tags: posts timeline, css timeline
+<<<<<<< HEAD
 Requires at least: 2.0.2
 Tested up to: 2.1
 Stable tag: 4.3
 >>>>>>> Initial Commit
+=======
+Requires at least: 3.1
+Tested up to: 3.3.2
+>>>>>>> added correct tested & requires versions
 License: GPLv2
 
 Output your WordPress posts or custom post types as a timeline with a few options.
