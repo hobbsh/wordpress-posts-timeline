@@ -31,6 +31,7 @@ To change the date format (maybe to use a MM DD, YYYY format), pass the appropri
 
 == Screenshots ==
 
+1. The timeline
 
 == Changelog ==
 
