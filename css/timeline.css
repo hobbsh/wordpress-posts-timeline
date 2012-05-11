@@ -39,11 +39,18 @@ CSS version 1.0
         margin-left:-10px;
         padding-left:30px;
     }
+<<<<<<< HEAD
     #timeline .timeline-date{
         text-align: right;
         margin-bottom: 1%;
     }
     #timeline ul li:nth-child(even) > div .timeline-date{
+=======
+    #timeline .date{
+        text-align: right;
+    }
+    #timeline ul li:nth-child(even) > div .date{
+>>>>>>> Initial Commit
         text-align: left;
     }
 
@@ -62,6 +69,7 @@ CSS version 1.0
     #timeline ul li:nth-child(odd) > div p{
         float:right;
         text-align: right;
+<<<<<<< HEAD
     }
     
 #timeline ul .timeline-image{
@@ -80,3 +88,6 @@ CSS version 1.0
 
 	
 	
+=======
+    }
+>>>>>>> Initial Commit

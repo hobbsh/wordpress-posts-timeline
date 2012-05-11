@@ -1,15 +1,24 @@
 <?php
 /*
 	Plugin Name: WordPress Posts Timeline
+<<<<<<< HEAD
 	Plugin URI: http://wordpress.org/extend/plugins/wordpress-posts-timeline
 	Description: Outputs WordPress posts in a vertical timeline
 	Author: Wylie Hobbs
 	Version: 1.0
 	Author URI: http:/hackbits.com/demos/wordpress-posts-timeline
+=======
+	Plugin URI: http://wordpress.org/extend/plugins/
+	Description: Outputs WordPress posts in a vertical timeline
+	Author: Wylie Hobbs
+	Version: 0.2
+	Author URI: http:/hackbits.com
+>>>>>>> Initial Commit
 	Text Domain: wordpress-posts-timeline
 	Domain Path: /lang
  */
  
+<<<<<<< HEAD
 /*  Copyright YEAR  PLUGIN_AUTHOR_NAME  (email : wylie@hackbits.com)
 
     This program is free software; you can redistribute it and/or modify
@@ -49,12 +58,28 @@ function display_timeline($args){
 			'post_type' => $args['type'],
 			'numberposts' => $args['show'],
 			'category' => $args['cat'],
+=======
+ 
+function display_timeline($atts, $content = null){
+	extract( shortcode_atts( array(
+      'cat' => '0',
+      'type' => 'post',
+      'show' => 5,
+      'date' => 'Y'
+     ), $atts ) );
+
+	$args = array(
+			'post_type' => $type,
+			'numberposts' => $show,
+			'category' => $cat,
+>>>>>>> Initial Commit
 			'orderby' => 'post_date',
 			'order' => 'ASC',
 			'post_status' => 'publish'
 		);
 
 	
+<<<<<<< HEAD
 		$posts = get_posts( $post_args );
 		echo '<div id="timeline">';
 		echo '<ul>';
@@ -71,6 +96,21 @@ function display_timeline($args){
 				}
 				echo timeline_text($args['length']);
 				echo '</div></li>';
+=======
+		$posts = get_posts( $args );
+		echo '<div id="timeline">';
+		echo '<ul>';	
+		foreach ( $posts as $post ) : setup_postdata($post);
+
+	        echo '<li><div>';
+	        
+	                echo '<h3>';
+	                the_time($date);
+	                echo'</h3>';
+	                echo '<p>'.$post->post_content.'</p>';
+	        
+	        echo '</div></li>';
+>>>>>>> Initial Commit
 
     	endforeach;
 
@@ -79,6 +119,7 @@ function display_timeline($args){
 		wp_reset_postdata();
 }
 
+<<<<<<< HEAD
 //trim text function
 function timeline_text($charlength){
 	
@@ -147,4 +188,17 @@ function featured_image(){
 }
 add_filter('get_the_content', 'do_shortcode');
 add_filter('get_the_excerpt', 'do_shortcode');
+=======
+add_shortcode('wp-timeline', 'display_timeline');
+
+function timeline_scripts() 
+{
+
+	wp_register_style($handle = 'timeline', $src = plugins_url('css/timeline.css', __FILE__), $deps = array(), $ver = '1.0.0', $media = 'all');
+	wp_enqueue_style('timeline');
+}
+
+add_action ('wp_enqueue_scripts', 'timeline_scripts');
+
+>>>>>>> Initial Commit
 ?>
