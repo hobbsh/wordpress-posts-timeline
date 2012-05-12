@@ -26,14 +26,23 @@
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-//example usage: [wp-timeline cat="5" date='F j, Y' show="15"] - show 15 posts in category-ID 5 with date format May 1, 2012
+define('WPTIMELINE_UNIQUE', 'wptimeline');
+define('WPTIMELINE_VERSION', 1.1);
+
+
+/*
+
+** AS OF v1.1, shortcode arguments are no longer used **
+
+get shrortcode attributes, pass to display function
+*/
 function timeline_shortcode($atts){
 	$args = shortcode_atts( array(
 		      'cat' => '0',
 		      'type' => 'post',
 		      'show' => 5,
 		      'date' => 'Y',
-		      'length' => 100,
+		      'length' => 10,
 		      'images' => 'no'
      		), $atts );
      
@@ -46,9 +55,9 @@ add_shortcode('wp-timeline', 'timeline_shortcode');
 function display_timeline($args){
 
 	$post_args = array(
-			'post_type' => $args['type'],
-			'numberposts' => $args['show'],
-			'category' => $args['cat'],
+			'post_type' => get_option('timeline_post_type'),
+			'numberposts' => get_option('timeline_show_posts'),
+			'category' => get_option('timeline_post_category'),
 			'orderby' => 'post_date',
 			'order' => 'ASC',
 			'post_status' => 'publish'
@@ -62,14 +71,14 @@ function display_timeline($args){
 
 	        echo '<li><div>';
 	            echo '<h3 class="timeline-date">';
-				echo get_the_time($args['date'], $post->ID);
+				echo get_the_time(get_option('timeline_date_format'), $post->ID);
 				echo '</h3>';
-				if ( $args['images'] == 'yes' ){
+				if ( get_option('timeline_include_images') == 'yes' ){
 					if ( featured_image() == true && has_post_thumbnail( $post->ID ) ){
 						echo '<span class="timeline-image">' . get_the_post_thumbnail( $post->ID, 'timeline-thumb' ) . '</span>';
 					}
 				}
-				echo timeline_text($args['length']);
+				echo timeline_text(get_option('timeline_text_length'));
 				echo '</div></li>';
 
     	endforeach;
@@ -79,18 +88,23 @@ function display_timeline($args){
 		wp_reset_postdata();
 }
 
-//trim text function
-function timeline_text($charlength){
-	
-	$raw_text = get_the_content('', true, '');
-
-	if ( mb_strlen( $raw_text ) > $charlength ) {
-		$subex = strip_tags(mb_substr( $raw_text, 0, $charlength - 5 ));
-		return '<p>'.$subex.'</p>';
-	}
-	else{
-		return '<p>'.$raw_text.'</p>';
-	}
+//trim text function found on http://www.jooria.com/Limit-Characters-From-Your-Text-a139.html
+function timeline_text($limit){
+	$str = get_the_content('', true, '');
+	$str = strip_tags($str);
+    if(stripos($str," ")){
+    $ex_str = explode(" ",$str);
+        if(count($ex_str)>$limit){
+            for($i=0;$i<$limit;$i++){
+            $str_s.=$ex_str[$i]." ";
+            }
+        return $str_s;
+        }else{
+        return $str;
+        }
+    }else{
+    return $str;
+    }
 }
 
 //is shortcode active on page? if so, add styles to header
@@ -145,6 +159,12 @@ function featured_image(){
 	}
 
 }
+
+//do shortcode for get_the_excerpt() && get_the_content()
 add_filter('get_the_content', 'do_shortcode');
 add_filter('get_the_excerpt', 'do_shortcode');
+
+//add options page
+require_once('inc/timeline_options.php');
+
 ?>

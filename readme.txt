@@ -4,7 +4,7 @@ Donate Link: http://www.hackbits.com/
 Tags: posts timeline, css timeline, vertical timeline, timeline
 Requires at least: 3.1
 Tested up to: 3.4.3 beta
-Stable tag: trunk
+Stable tag: 1.1
 License: GPLv2
 
 Output your WordPress posts or custom post types as a timeline with a few options.
