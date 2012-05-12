@@ -64,7 +64,7 @@ function set_options(){
 		'post_type' => array ( 'name' => 'timeline_post_type' , 'default' => 'post', 'desc' => 'Select the post type', 'input_type' => 'dropdown', 'data' => $post_type_data),
 		'show_posts' => array ( 'name' => 'timeline_show_posts', 'default' => '5', 'desc' => 'How many posts do you want to show?', 'input_type' => 'text'),
 		'date_format' => array ( 'name' => 'timeline_date_format' , 'default' => 'F j, Y', 'desc' => 'What date format do you want to use?', 'input_type' => 'dropdown', 'data' => $date_data),
-		'text_length' => array ( 'name' => 'timeline_text_length' , 'default' => 100, 'desc' => 'How many words do you want to show for each post?', 'input_type' => 'text', ),
+		'text_length' => array ( 'name' => 'timeline_text_length' , 'default' => 10, 'desc' => 'How many words do you want to show for each post?', 'input_type' => 'text', ),
 		'include_images' => array ( 'name' => 'timeline_include_images', 'default' => 'no', 'desc' => 'Do you want to include featured image thumbnails?', 'input_type' => 'dropdown', 'data' => array('yes' => 'yes', 'no' => 'no'))				
 		
 	);
