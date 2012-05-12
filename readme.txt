@@ -26,8 +26,7 @@ It will pull uncategorized posts by default.
 
 = How do I change the date format? =
 
-To change the date format (maybe to use a MM DD, YYYY format), pass the appropriate PHP the_time() syntax in the shortcode with the **date** option. See usage for more details.
-
+There are currently four date options on the settings page. If you wish to see more formats, please suggest one or edit the source yourself.
 
 == Screenshots ==
 
@@ -35,6 +34,9 @@ To change the date format (maybe to use a MM DD, YYYY format), pass the appropri
 
 == Changelog ==
 
+= 1.1 =
+* Added options page, all options now managed here, not through shortcode
+* Updated custom text function to work with whole words instead of fragments (characters)
 
 
 = 1.0 =
@@ -47,11 +49,13 @@ To change the date format (maybe to use a MM DD, YYYY format), pass the appropri
 
 **Default Usage**
 
-*[wp-timeline cat="5"]*
-Display posts in post category "5" (category ID). If no category is specified, it will pull uncategorized posts.
+*[wp-timeline]*
+Displays posts in post uncategorized category, showing 5 posts, 10 words per post, no images and year only date format.
+
+Change default settings on the settings page.
 
 
-**Other Options**
+**SHORTCODES NO LONGER VALID**
 
 * *cat* – specify a category ID, default is 0
 * *show* – show a certain number of posts, default is 10
