@@ -4,7 +4,7 @@
 	Plugin URI: http://wordpress.org/extend/plugins/wordpress-posts-timeline
 	Description: Outputs WordPress posts in a vertical timeline
 	Author: Wylie Hobbs
-	Version: 1.1
+	Version: 1.2
 	Author URI: http:/hackbits.com/demos/wordpress-posts-timeline
 	Text Domain: wordpress-posts-timeline
 	Domain Path: /lang
@@ -59,7 +59,7 @@ function display_timeline($args){
 			'numberposts' => get_option('timeline_show_posts'),
 			'category' => get_option('timeline_post_category'),
 			'orderby' => 'post_date',
-			'order' => 'ASC',
+			'order' => get_option('timeline_order_posts'),
 			'post_status' => 'publish'
 		);
 

@@ -4,7 +4,7 @@ Donate Link: http://www.hackbits.com/
 Tags: posts timeline, css timeline, vertical timeline, timeline
 Requires at least: 3.1
 Tested up to: 3.4.3 beta
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2
 
 Output your WordPress posts or custom post types as a timeline with a few options.
@@ -34,6 +34,9 @@ The date is pulled from your posts published date. If you need to backdate, you 
 
 == Changelog ==
 
+= 1.2 = 
+* Add post sort option
+
 = 1.1 =
 * Added options page, all options now managed here, not through shortcode
 * Updated custom text function to work with whole words instead of fragments (characters)
@@ -44,8 +47,11 @@ The date is pulled from your posts published date. If you need to backdate, you 
 
 == Upgrade Notice ==
 
+= 1.2 = 
+Added post sort option, please update to obtain this feature.
+
 = 1.1 = 
-Added options page and fixed core functionality. Shorcodes are simplified to [wp-timeline], options managed through settings page.
+Added options page and fixed core functionality. Shortcodes are simplified to [wp-timeline], options managed through settings page.
 
 == A brief Markdown Example ==
 
