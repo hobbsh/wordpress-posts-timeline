@@ -22,9 +22,12 @@ CSS version 1.0
     width: 50%;
     clear:both;
 }
-#timeline ul li p{
-        width:68%;
+#timeline ul li .timeline-text{
+        width:65%;
         float:left;
+        font-size:14px;
+        line-height:17px;
+        margin-left:2%;
     }
     #timeline ul li div{
         //you can add a background color if you want
@@ -60,16 +63,17 @@ CSS version 1.0
         padding-right:30px;
     }
 
-    #timeline ul li:nth-child(odd) > div p{
+    #timeline ul li:nth-child(odd) > div .timeline-text{
         float:right;
         text-align: right;
+        margin-right:2%;
+        margin-left: 0;
     }
     
 #timeline ul .timeline-image{
-	width: 22%;
+	width: 30%;
 	height: auto;
 	overflow-x: hidden;
-	min-height: 100px;
 }
 	#timeline ul li:nth-child(odd) > div .timeline-image {
 		float:right;
