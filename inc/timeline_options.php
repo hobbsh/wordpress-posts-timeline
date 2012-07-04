@@ -7,7 +7,7 @@ timeline_show_posts - input integer for number of posts to show
 timeline_date_format - select from date formats dropdown
 timeline_text_length - input integer for timeline text length
 timeline_include_images - select 'yes' or 'no' from dropdown
-
+timeline_order_posts - select ASC or DESC for post output order
 
 */
 
@@ -60,13 +60,57 @@ function set_options(){
 	$date_data = timeline_date_formats();
 	
 	$options = array(
-		'post_category' => array ( 'name' => 'timeline_post_category', 'default' => '0', 'desc' => 'Select a post category for your timeline:', 'input_type' => 'dropdown', 'data' => $cat_data),
-		'post_type' => array ( 'name' => 'timeline_post_type' , 'default' => 'post', 'desc' => 'Select the post type', 'input_type' => 'dropdown', 'data' => $post_type_data),
-		'show_posts' => array ( 'name' => 'timeline_show_posts', 'default' => '5', 'desc' => 'How many posts do you want to show?', 'input_type' => 'text'),
-		'date_format' => array ( 'name' => 'timeline_date_format' , 'default' => 'F j, Y', 'desc' => 'What date format do you want to use?', 'input_type' => 'dropdown', 'data' => $date_data),
-		'text_length' => array ( 'name' => 'timeline_text_length' , 'default' => 10, 'desc' => 'How many words do you want to show for each post?', 'input_type' => 'text', ),
-		'include_images' => array ( 'name' => 'timeline_include_images', 'default' => 'no', 'desc' => 'Do you want to include featured image thumbnails?', 'input_type' => 'dropdown', 'data' => array('yes' => 'yes', 'no' => 'no')),
-		'post_order' => array ( 'name' => 'timeline_order_posts' , 'default' => 'DESC', 'desc' => 'How do you want to order your posts?', 'input_type' => 'dropdown', 'data' => array('Ascending' => 'ASC', 'Descending' => 'DESC') )
+		'post_category' => array ( //option 'slug'
+			'name' => 'timeline_post_category', 
+			'default' => '0', 
+			'desc' => 'Select a post category for your timeline:', 
+			'input_type' => 'dropdown', 
+			'data' => $cat_data //data should be single dimensional assoc array
+			),
+		'post_type' => array ( 
+			'name' => 'timeline_post_type' , 
+			'default' => 'post', 
+			'desc' => 'Select the post type', 
+			'input_type' => 'dropdown', 
+			'data' => $post_type_data
+			),
+		'show_posts' => array ( 
+			'name' => 'timeline_show_posts', 
+			'default' => '5', 
+			'desc' => 'How many posts do you want to show?', 
+			'input_type' => 'text'
+			),
+		'date_format' => array (
+			'name' => 'timeline_date_format' , 
+			'default' => 'F j, Y', 
+			'desc' => 'What date format do you want to use?', 
+			'input_type' => 'dropdown', 
+			'data' => $date_data
+			),
+		'text_length' => array ( 
+			'name' => 'timeline_text_length' , 
+			'default' => 10, 
+			'desc' => 'How many words do you want to show for each post?', 
+			'input_type' => 'text', 
+			),
+		'include_images' => array ( 
+			'name' => 'timeline_include_images', 
+			'default' => 'no', 
+			'desc' => 'Do you want to include featured image thumbnails?', 
+			'input_type' => 'dropdown', 
+			'data' => array( //manual dropdown options
+				'yes' => 'yes', 
+				'no' => 'no')
+				),
+		'post_order' => array ( 
+			'name' => 'timeline_order_posts' , 
+			'default' => 'DESC', 
+			'desc' => 'How do you want to order your posts?', 
+			'input_type' => 'dropdown', 
+			'data' => array(
+				'Ascending' => 'ASC', 
+				'Descending' => 'DESC') 
+			)
 	);
 
 	return $options;
@@ -132,16 +176,16 @@ function wptimeline_settings() {
 	<?php
 }
 
-//register settings loops through options from set_options()
+//register settings loops through options
 function timeline_register_settings()
 {
-	$options = set_options();
+	$options = set_options(); //get options array
 	
 	foreach($options as $option){
-		register_setting('timeline-settings', $option['name']);
+		register_setting('timeline-settings', $option['name']); //register each setting with option's 'name'
 		
 		if (get_option($option['name']) === false) {
-			add_option($option['name'], $option['default'], '', 'yes');
+			add_option($option['name'], $option['default'], '', 'yes'); //set option defaults
 		}
 	}
 
