@@ -78,7 +78,7 @@ function display_timeline($args){
 						echo '<span class="timeline-image">' . get_the_post_thumbnail( $post->ID, 'timeline-thumb' ) . '</span>';
 					}
 				}
-				echo timeline_text(get_option('timeline_text_length'));
+				echo '<span class="timeline-text">'.timeline_text(get_option('timeline_text_length')).'</span>';
 				echo '</div></li>';
 
     	endforeach;
