@@ -60,7 +60,8 @@ function display_timeline($args){
 			'category' => get_option('timeline_post_category'),
 			'orderby' => 'post_date',
 			'order' => get_option('timeline_order_posts'),
-			'post_status' => 'publish'
+			'post_status' => 'publish',
+			'post_link' => get_option('timeline_post_link')
 		);
 
 	
@@ -70,9 +71,17 @@ function display_timeline($args){
 		foreach ( $posts as $post ) : setup_postdata($post);
 
 	        echo '<li><div>';
-	            echo '<h3 class="timeline-date">';
-				echo get_the_time(get_option('timeline_date_format'), $post->ID);
-				echo '</h3>';
+	        	if( get_option('timeline_post_link') == 'yes'){
+	        		echo '<a href="' . get_permalink($post->ID) . '" title="'.$post->title.'">';
+	        		echo '<h3 class="timeline-date">';
+	        		echo get_the_time(get_option('timeline_date_format'), $post->ID);
+					echo '</h3></a>';
+	        	}
+	        	else{
+	            	echo '<h3 class="timeline-date">';
+	            	echo get_the_time(get_option('timeline_date_format'), $post->ID);
+					echo '</h3>';
+	            }
 				if ( get_option('timeline_include_images') == 'yes' ){
 					if ( featured_image() == true && has_post_thumbnail( $post->ID ) ){
 						echo '<span class="timeline-image">' . get_the_post_thumbnail( $post->ID, 'timeline-thumb' ) . '</span>';

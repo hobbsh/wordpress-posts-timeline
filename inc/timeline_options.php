@@ -110,7 +110,17 @@ function set_options(){
 			'data' => array(
 				'Ascending' => 'ASC', 
 				'Descending' => 'DESC') 
+			),
+		'post_link' => array ( 
+			'name' => 'timeline_post_link' , 
+			'default' => 'yes', 
+			'desc' => 'Do you want to link to the post?', 
+			'input_type' => 'dropdown', 
+			'data' => array(
+				'yes' => 'yes', 
+				'no' => 'no') 
 			)
+		
 	);
 
 	return $options;
