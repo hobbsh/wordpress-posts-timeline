@@ -1,10 +1,10 @@
 === WordPress Posts Timeline ===
 Contributors: hobbsh
-Donate Link: http://www.hackbits.com/
+Donate Link: http://www.wyliehobbs.com/donate/
 Tags: posts timeline, css timeline, vertical timeline, timeline
-Requires at least: 3.1
-Tested up to: 3.4.1
-Stable tag: 1.3
+Requires at least: 3.0
+Tested up to: 3.5.1
+Stable tag: 1.7
 License: GPLv2
 
 Output your WordPress posts or custom post types as a timeline with a few options.
@@ -34,6 +34,14 @@ The date is pulled from your posts published date. If you need to backdate, you 
 
 == Changelog ==
 
+= 1.7 =
+* Changed set_options function name to timeline_set_options as it would break some installations
+* Fixed more css bugs, re: alingment issues and clearfixes
+
+= 1.5 =
+* Added link to post option
+* Fixed some CSS bugs and image issues
+
 = 1.3 =
 * Added link to post option
 * Fixed some CSS bugs and image issues
@@ -50,6 +58,10 @@ The date is pulled from your posts published date. If you need to backdate, you 
 * Initial Release
 
 == Upgrade Notice ==
+
+= 1.7 =
+* Changed set_options function name to timeline_set_options as it would break some installations
+* Fixed more css bugs, re: alingment issues and clearfixes
 
 = 1.3 =
 Made some changes to CSS to fix some styling and image issues. You can also now add a link to the post on the timeline. 
