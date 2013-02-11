@@ -1,6 +1,8 @@
 <?php
 /* CURRENT OPTIONS:
 
+plugin version 1.6.1
+
 timeline_post_category - select post category from current category dropdown
 timeline_post_type - select post type from post type dropdown
 timeline_show_posts - input integer for number of posts to show
@@ -8,6 +10,7 @@ timeline_date_format - select from date formats dropdown
 timeline_text_length - input integer for timeline text length
 timeline_include_images - select 'yes' or 'no' from dropdown
 timeline_order_posts - select ASC or DESC for post output order
+timeline_post_link - add link to full post
 
 */
 
@@ -31,9 +34,10 @@ function timeline_get_categories(){
 function timeline_date_formats(){
 		$date_formats = array(
 			'March 10, 2012' => 'F j, Y',
-			'03.10.2012' => 'm.d.y',
+			'03.10.2012' => 'm.j.y',
 			'2012' => 'Y',
-			'March, 2012' => 'F, Y'
+			'March, 2012' => 'F, Y',
+			'20 March, 2012' => 'j F, Y'
 		);
 		
 		return $date_formats;
@@ -53,7 +57,7 @@ each option needs a name, default value, description, and input_type (dropdown o
 dropdown options need a data field that takes a single dimensional associative array as its value
 
 */
-function set_options(){
+function timeline_set_options(){
 	
 	$cat_data = timeline_get_categories();
 	$post_type_data = timeline_get_post_types();
@@ -80,17 +84,25 @@ function set_options(){
 			'desc' => 'How many posts do you want to show?', 
 			'input_type' => 'text'
 			),
+		'show_titles' => array ( 
+			'name' => 'timeline_show_titles', 
+			'default' => 'no', 
+			'desc' => 'Do you want to show the post title?', 
+			'input_type' => 'dropdown', 
+			'data' => array( //manual dropdown options
+				'yes' => 'yes', 
+				'no' => 'no')
+				),
 		'date_format' => array (
 			'name' => 'timeline_date_format' , 
 			'default' => 'F j, Y', 
-			'desc' => 'What date format do you want to use?', 
-			'input_type' => 'dropdown', 
-			'data' => $date_data
+			'desc' => 'What <a target="_blank" href="http://php.net/manual/en/function.date.php">date format</a> do you want to use?', 
+			'input_type' => 'text'
 			),
 		'text_length' => array ( 
 			'name' => 'timeline_text_length' , 
 			'default' => 10, 
-			'desc' => 'How many words do you want to show for each post?', 
+			'desc' => 'How many words do you want to show for each post? (Use "-1" for full length)', 
 			'input_type' => 'text', 
 			),
 		'include_images' => array ( 
@@ -192,6 +204,7 @@ function timeline_register_settings()
 	$options = set_options(); //get options array
 	
 	foreach($options as $option){
+		delete_option('timeline-date-format');
 		register_setting('timeline-settings', $option['name']); //register each setting with option's 'name'
 		
 		if (get_option($option['name']) === false) {
