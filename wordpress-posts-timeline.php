@@ -4,7 +4,7 @@
 	Plugin URI: http://wordpress.org/extend/plugins/wordpress-posts-timeline
 	Description: Outputs WordPress posts in a vertical timeline
 	Author: Wylie Hobbs
-	Version: 1.2
+	Version: 1.7
 	Author URI: http:/hackbits.com/demos/wordpress-posts-timeline
 	Text Domain: wordpress-posts-timeline
 	Domain Path: /lang
@@ -27,7 +27,7 @@
 */
 
 define('WPTIMELINE_UNIQUE', 'wptimeline');
-define('WPTIMELINE_VERSION', 1.1);
+define('WPTIMELINE_VERSION', 1.7);
 
 
 /*
@@ -66,50 +66,58 @@ function display_timeline($args){
 
 	
 		$posts = get_posts( $post_args );
-		echo '<div id="timeline">';
-		echo '<ul>';
+		$out .=  '<div id="timeline">';
+		$out .=   '<ul>';
 		foreach ( $posts as $post ) : setup_postdata($post);
 
-	        echo '<li><div>';
+	        $out .=  '<li><div>';
 	        	if( get_option('timeline_post_link') == 'yes'){
-	        		echo '<a href="' . get_permalink($post->ID) . '" title="'.$post->title.'">';
-	        		echo '<h3 class="timeline-date">';
-	        		echo get_the_time(get_option('timeline_date_format'), $post->ID);
-					echo '</h3></a>';
+	        		$out .=  '<a href="' . get_permalink($post->ID) . '" title="'.$post->title.'">';
+	        		$out .=  '<h3 class="timeline-date">';
+					$out .=  get_the_time(get_option('timeline_date_format'), $post->ID);
+					if( get_option('timeline_show_titles') == 'yes'){
+						$out .=  " ".get_the_title($post->ID)." ";
+					}
+					$out .=  '</h3></a>';
 	        	}
 	        	else{
-	            	echo '<h3 class="timeline-date">';
-	            	echo get_the_time(get_option('timeline_date_format'), $post->ID);
-					echo '</h3>';
+	            	$out .=  '<h3 class="timeline-date">';
+	            	$out .= get_the_time(apply_filters( 'timeline_date_format', get_option('timeline_date_format') ), $post->ID);
+					if( get_option('timeline_show_titles') == 'yes'){
+						$out .=  " ".get_the_title($post->ID)." ";
+					}
+					$out .=  '</h3>';
 	            }
 				if ( get_option('timeline_include_images') == 'yes' ){
 					if ( featured_image() == true && has_post_thumbnail( $post->ID ) ){
-						echo '<span class="timeline-image">' . get_the_post_thumbnail( $post->ID, 'timeline-thumb' ) . '</span>';
+						$out .=  '<span class="timeline-image">' . get_the_post_thumbnail( $post->ID, 'timeline-thumb' ) . '</span>';
 					}
 				}
-				echo '<span class="timeline-text">'.timeline_text(get_option('timeline_text_length')).'</span>';
-				echo '</div></li>';
+				$out .=  '<span class="timeline-text">'.timeline_text(get_option('timeline_text_length')).'</span>';
+				$out .=  '</div></li>';
 
     	endforeach;
 
-		echo '</ul>';
-		echo '</div> <!-- #timeline -->';
+		$out .=  '</ul>';
+		$out .=  '</div> <!-- #timeline -->';
 		wp_reset_postdata();
+		return $out;
 }
 
 //trim text function found on http://www.jooria.com/Limit-Characters-From-Your-Text-a139.html
 function timeline_text($limit){
 	$str = get_the_content('', true, '');
 	$str = strip_tags($str);
-    if(stripos($str," ")){
+    if(stripos($str," ") && $limit>=0){
     $ex_str = explode(" ",$str);
         if(count($ex_str)>$limit){
             for($i=0;$i<$limit;$i++){
-            $str_s.=$ex_str[$i]." ";
+				$str_s.=$ex_str[$i]." ";
             }
-        return $str_s;
+			$str_s.="...";
+			return $str_s;
         }else{
-        return $str;
+			return $str;
         }
     }else{
     return $str;
